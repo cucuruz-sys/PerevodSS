@@ -32,7 +32,13 @@ class Page_convert(tk.Frame):
         tk.Frame.__init__(self, parent)
 
         def convert():
-            out_text.configure(text=self.convert_base(inpnum.get(), int(baseto.get()), int(basefrom.get())))
+            if (len(inpnum.get()) < 1) and (len(inpnum.get()) < 1) and (len(inpnum.get()) < 1):
+                messagebox.showerror(title='Ошибка преобразования', message='Все поля ввода надо заполнить')
+            elif not (inpnum.get().isdigit() and baseto.get().isdigit() and basefrom.get().isdigit()):
+                messagebox.showerror(title='Ошибка преобразования', message='Вы ввели не целое число')
+
+            else:
+                out_text.configure(text=self.convert_base(inpnum.get(), int(baseto.get()), int(basefrom.get())))
 
 
         #window = Tk()
