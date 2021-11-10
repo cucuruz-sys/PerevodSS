@@ -8,10 +8,6 @@ class Page_edu(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        #window = Tk()
-        #window.geometry('1100x500')
-
-        #window.title("Обучение переводу")
         lbl = Label(self, text="Выберите в какую систему счисления вы хотите научиться перводить", font=("Arial Bold", 14))
         lbl.grid(column=0, row=0)
 

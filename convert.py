@@ -10,8 +10,6 @@ class Page_convert(tk.Frame):
 
         if (from_base < 2) or (to_base < 2):
             messagebox.showerror(title='Ошибка преобразования', message='Основание системы счисления не может быть меньше 2х')
-        elif (from_base == to_base):
-            messagebox.showerror(title='Ошибка преобразования', message='Вы ввели одинаковые основания для системы счисления')
         elif (len(str(num)) < 1):
             messagebox.showerror(title='Ошибка преобразования', message='Пустое поле для числа')
         else:
@@ -26,24 +24,25 @@ class Page_convert(tk.Frame):
 
             #return res[::-1]
             return resu
-
+    def SScheck(self,num,ss):
+        if(int(max(str(num)))<int(ss)):
+            return False
+        else:
+            return True
     def __init__(self, parent, controller):
 
         tk.Frame.__init__(self, parent)
-
         def convert():
-            if (len(inpnum.get()) < 1) and (len(inpnum.get()) < 1) and (len(inpnum.get()) < 1):
+            if (len(inpnum.get()) < 1) or (len(baseto.get()) < 1) or (len(basefrom.get()) < 1):
                 messagebox.showerror(title='Ошибка преобразования', message='Все поля ввода надо заполнить')
             elif not (inpnum.get().isdigit() and baseto.get().isdigit() and basefrom.get().isdigit()):
                 messagebox.showerror(title='Ошибка преобразования', message='Вы ввели не целое число')
-
+            elif (self.SScheck(inpnum.get(),basefrom.get())):
+                messagebox.showerror(title='Ошибка преобразования', message='Число не соответсвует системе счисления')
             else:
                 out_text.configure(text=self.convert_base(inpnum.get(), int(baseto.get()), int(basefrom.get())))
 
-
-        #window = Tk()
         #window.geometry('1100x500')
-
         #window.title("Перевод из одной сиситемы счисления в другую")
 
         lbl = Label(self, text="Перевести из системы счисления с основанием:", font=("Arial Bold", 14))

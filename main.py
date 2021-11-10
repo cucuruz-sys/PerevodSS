@@ -7,12 +7,10 @@ from tkinter import ttk
 from convert import *
 from edu import *
 
-
 class tkinterApp(tk.Tk):
     def go_main(self):
         self.geometry('1100x500')
         self.show_frame(StartPage)
-
     def go_edu(self, num=0):
         if num == 0:
             self.geometry('1100x500')
@@ -86,8 +84,5 @@ class StartPage(tk.Frame):
         btn.place(x=125, y=85)
         btn = Button(self, text="Перевод", command = lambda : controller.show_frame(Page_convert), font=("Arial Bold", 14), height = 5, width = 20)
         btn.place(x=400, y=85)
-
-
-
 app = tkinterApp()
 app.mainloop()
